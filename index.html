@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pokemon Search</title>
+</head>
+<body>
+    <h1 class="title">PokeSearch</h1>
+   <div class="container">
+        <form action="" class="form">
+            <input type="text" class="form__input" name="pokemonInput" placeholder="Pikachu">
+            <button type="submit" class="form__btn" >Buscar</button>
+        </form>
+        <main class="container__pokemons">
+            <div class="loading">
+                <img src="icon/loading.svg" class="loading__img" alt="">
+            </div>
+            <template id="templatePokemon">
+                <article class="pokemon">
+                    <div class="pokemon__img">
+                        <img src="" alt="" class="img">
+                    </div>
+                    <span class="pokemon__name">Pikachu</span>
+                </article>
+            </template>
+        </main>   
+   </div>  
+   <script src="scripts.js"></script> 
+</body>
+</html>
