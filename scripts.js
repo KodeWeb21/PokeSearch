@@ -28,6 +28,7 @@ const getImagePokemon = (url) =>{
 
 const paintError = (message) =>{
     const span = document.createElement("span");
+    span.classList.add("error");
     span.textContent = message
     $containerPokemons.appendChild(span)
 }
