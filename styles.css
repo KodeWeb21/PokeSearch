@@ -80,6 +80,10 @@ body,
     width: 50px;
 }
 
+.error{
+    padding: 10px 0
+}
+
 @keyframes load{
     from{
         transform: rotate(0)
