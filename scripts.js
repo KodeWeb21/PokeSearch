@@ -26,6 +26,12 @@ const getImagePokemon = (url) =>{
     .then(data=>data.sprites.front_default)
 }
 
+const paintError = (message) =>{
+    const span = document.createElement("span");
+    span.textContent = message
+    $containerPokemons.appendChild(span)
+}
+
 const paintPokemons = async (pokemons) =>{
     const fragment = document.createDocumentFragment();
     for(const pokemon of pokemons){
@@ -46,12 +52,18 @@ const paintPokemons = async (pokemons) =>{
 
 const getDataPokemon = (url) =>{
     return fetch(url)
-    .then(response=>response.json())
+    .then(response=>response.ok? response.json() : Promise.reject(response))
     .then(pokemon=>{
         return{
             "name": pokemon.name, 
             "img": pokemon.sprites.front_default
         };
+    })
+    .catch(err=>{
+        const statusError = err.status
+        const messageError = err.statusText || "Not Found"
+        console.log(statusError,messageError)
+        return false
     })
 }
 
@@ -90,6 +102,10 @@ $formSearch.addEventListener("submit", async (event)=>{
     const URLPOKEMON = `https://pokeapi.co/api/v2/pokemon/${pokemonToSearch}`;
     addLoading();
     const wantedPokemon =  await getDataPokemon(URLPOKEMON);
+    if(!wantedPokemon){
+        removeLoading();
+        paintError("404 Not Found")
+    }
     paintOnePokemo(wantedPokemon);
 })
 
